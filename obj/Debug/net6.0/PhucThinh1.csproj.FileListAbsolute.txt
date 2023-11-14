@@ -1,0 +1,37 @@
+D:\Bài Tập Về Nhà\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\PhucThinh1.exe
+D:\Bài Tập Về Nhà\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\PhucThinh1.deps.json
+D:\Bài Tập Về Nhà\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\PhucThinh1.runtimeconfig.json
+D:\Bài Tập Về Nhà\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\PhucThinh1.dll
+D:\Bài Tập Về Nhà\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\PhucThinh1.pdb
+D:\Bài Tập Về Nhà\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.GeneratedMSBuildEditorConfig.editorconfig
+D:\Bài Tập Về Nhà\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.AssemblyInfoInputs.cache
+D:\Bài Tập Về Nhà\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.AssemblyInfo.cs
+D:\Bài Tập Về Nhà\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.csproj.CoreCompileInputs.cache
+D:\Bài Tập Về Nhà\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.dll
+D:\Bài Tập Về Nhà\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\refint\PhucThinh1.dll
+D:\Bài Tập Về Nhà\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.pdb
+D:\Bài Tập Về Nhà\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.genruntimeconfig.cache
+D:\Bài Tập Về Nhà\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\ref\PhucThinh1.dll
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.csproj.AssemblyReference.cache
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.GeneratedMSBuildEditorConfig.editorconfig
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.AssemblyInfoInputs.cache
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.AssemblyInfo.cs
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.csproj.CoreCompileInputs.cache
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.dll
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\refint\PhucThinh1.dll
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.pdb
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\PhucThinh1.exe
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\PhucThinh1.deps.json
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\PhucThinh1.runtimeconfig.json
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\PhucThinh1.dll
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\PhucThinh1.pdb
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\System.Data.SqlClient.dll
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.csproj.CopyComplete
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\PhucThinh1.genruntimeconfig.cache
+D:\BTVN\PhucThinh1\PhucThinh1\PhucThinh1\obj\Debug\net6.0\ref\PhucThinh1.dll

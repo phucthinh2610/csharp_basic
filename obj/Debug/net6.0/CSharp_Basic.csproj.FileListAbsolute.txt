@@ -1,0 +1,5 @@
+D:\BTVN\csharp_basic\csharp_basic\csharp_basic\obj\Debug\net6.0\CSharp_Basic.csproj.AssemblyReference.cache
+D:\BTVN\csharp_basic\csharp_basic\csharp_basic\obj\Debug\net6.0\CSharp_Basic.GeneratedMSBuildEditorConfig.editorconfig
+D:\BTVN\csharp_basic\csharp_basic\csharp_basic\obj\Debug\net6.0\CSharp_Basic.AssemblyInfoInputs.cache
+D:\BTVN\csharp_basic\csharp_basic\csharp_basic\obj\Debug\net6.0\CSharp_Basic.AssemblyInfo.cs
+D:\BTVN\csharp_basic\csharp_basic\csharp_basic\obj\Debug\net6.0\CSharp_Basic.csproj.CoreCompileInputs.cache
