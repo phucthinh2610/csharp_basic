@@ -1,20 +1,22 @@
-﻿using CSharp_Basic.SQLAdappter;
+﻿using CSharp_Basic.Object;
+using CSharp_Basic.SQLAdappter;
 using CSharp_Basic.Object;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using CSharp_Basic.Object;
 
 namespace CSharp_Basic.SQLAdapter
 {
-    public class OrderSqlAdapter : ISQLAdapter
+    public class OrderDetailSqlAdapter : ISQLAdapter
     {
         public string ConnectionString { get; set; }
         public string TableName { get; set; }
 
-        public OrderSqlAdapter(string connectionString)
+        public OrderDetailSqlAdapter(string connectionString)
         {
             this.ConnectionString = connectionString;
-            this.TableName = "Orders";
+            this.TableName = "Order_details";
         }
 
         public int Insert<T>(T item) where T : class, new()
@@ -27,11 +29,11 @@ namespace CSharp_Basic.SQLAdapter
                 {
                     connection.Open();
 
-                    string query = $"INSERT INTO {TableName} (order_id, UserId, OrderDay, TotalAmount) VALUES (@Id, @CustomerId, @OrderDay, @TotalAmount)";
+                    string query = $"INSERT INTO {TableName} (order_id, UserId, total_amount) VALUES (@Id, @userId, @TotalAmount)";
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@Id", order.Id);
                     command.Parameters.AddWithValue("@UserId", order.UserId);
-                    command.Parameters.AddWithValue("@OrderDay", order.OrderDay);
+                    
                     command.Parameters.AddWithValue("@TotalAmount", order.TotalAmount);
 
                     return command.ExecuteNonQuery();

@@ -1,38 +1,82 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using CSharp_Basic.Object;
+using CSharp_Basic.SQLAdappter;
 
 namespace CSharp_Basic.SQLAdappter
 {
 
-    public interface UsersSQLAdapter : ISQLAdapter
+    public class UsersSQLAdapter : ISQLAdapter
     {
         public string ConnectionString { get; set; }
         public string TableName { get; set; }
+        string ISQLAdapter.ConnectionString { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        string ISQLAdapter.TableName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public  UsersSQLAdapter( string ConString)
+        {
+            this.ConnectionString = ConString;
+            this.TableName = "USERS";
+        }
 
 
-
-
-
-
-        public void InsertData(USERS user)
+        public T Get<T>(Guid id) where T : class, new()
         {
             try
             {
-                string ConString = @"DESKTOP-42KI5S0\MYSQL;database= HCM23_FRF_FNW_01;intergrated security = True;";
-                using (SqlConnection connection = new SqlConnection(ConString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
 
-                    string commandText = "INSERT INTO USERS (fullName, UserId, email) VALUES (@fullName, @UserId, @email)";
+                    string query = $"SELECT UserId, fullName,  email  FROM {TableName} WHERE user_id = @Id";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Id", id);
 
-                    using (SqlCommand command = new SqlCommand(commandText, connection))
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            USERS user = new USERS
+                            {
+                                Id = Guid.Parse(reader["UserId"].ToString()),
+                                fullName = reader["fullName"].ToString(),
+                                email = reader["email"].ToString()
+                            };
+
+                            return user as T;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving USERS: {ex.Message}");
+            }
+
+            return null;
+        }
+
+
+
+        public int Insert<T>(T item) where T : class, new()
+        {
+            try
+            {
+                USERS user = item as USERS;
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    string query = "INSERT INTO USERS (fullName, UserId, email) VALUES (@fullName, @UserId, @email)";
+
+                    SqlCommand command = new SqlCommand(query, connection);
                     {
                         command.Parameters.AddWithValue("@fullName", user.fullName);
                         command.Parameters.AddWithValue("@UserId", user.Id);
                         command.Parameters.AddWithValue("@email", user.email);
-                        command.ExecuteNonQuery();
+                        return command.ExecuteNonQuery();
                     }
                 }
             }
@@ -43,32 +87,35 @@ namespace CSharp_Basic.SQLAdappter
             catch (Exception ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");
+                return default;
             }
         }
 
-        public void UpdateData(USERS user)
+        public int Update<T>(T item) where T : class, new()
+
         {
             try
             {
-                string ConString = @"DESKTOP-42KI5S0\MYSQL;database= HCM23_FRF_FNW_01;intergrated security = True;";
-                using (SqlConnection connection = new SqlConnection(ConString))
+                USERS user = item as USERS;
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
 
-                    string commandText = "UPDATE USERS SET fullName = @fullName, email = @email WHERE Id = @Id";
+                    string query = "UPDATE USERS SET fullName = @fullName, email = @email WHERE Id = @Id";
 
-                    using (SqlCommand command = new SqlCommand(commandText, connection))
+                    SqlCommand command = new SqlCommand(query, connection);
                     {
                         command.Parameters.AddWithValue("@fullName", user.fullName);
                         command.Parameters.AddWithValue("@email", user.email);
                         command.Parameters.AddWithValue("@Id", user.Id);
-                        command.ExecuteNonQuery();
+                        return command.ExecuteNonQuery();
                     }
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");
+                return 0;
             }
         }
 
@@ -152,6 +199,36 @@ namespace CSharp_Basic.SQLAdappter
                 Console.WriteLine($"Error retrieving users: {ex.Message}");
                 return null;
             }
+        }
+
+        List<T> ISQLAdapter.GetData<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        T ISQLAdapter.Get<T>(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        int ISQLAdapter.Insert<T>(T item)
+        {
+            throw new NotImplementedException();
+        }
+
+        int ISQLAdapter.Update<T>(T item)
+        {
+            throw new NotImplementedException();
+        }
+
+        int ISQLAdapter.Delete<T>(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal List<T> GetData<T>()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -6,29 +6,23 @@ using System.Threading.Tasks;
 
 namespace CSharp_Basic.Object
 {
-    public class Orders
+    // CartDetail
+    public class CartDetail
     {
         /// <summary>
-        /// Id
+        /// Cart id
         /// </summary>
         public Guid Id { get; set; }
 
-
         /// <summary>
-        /// userId
-        /// </summary> 
-        public Guid UserId { get; set; }
-
-        /// <summary>
-        /// Order Day
+        /// product id
         /// </summary>
-        public DateTime OrderDay { get; set; }
-
+        public Guid ProductId { get; set; }
 
         /// <summary>
-        /// Total
+        /// Quantity
         /// </summary>
-        public decimal TotalAmount { get; set; }
+        public int Quantity { get; set; }
     }
 
 }

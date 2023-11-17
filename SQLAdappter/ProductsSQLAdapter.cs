@@ -2,45 +2,51 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using CSharp_Basic.Object;
+using System.Linq;
+using System.Text;
 
 namespace CSharp_Basic.SQLAdappter
 {
     /// <summary>
     /// Product Adapter
     /// </summary>
-    public interface ProductsSQLAdapter : ISQLAdapter
+    public class ProductsSQLAdapter : ISQLAdapter
     {
         public string ConnectionString { get; set; }
         public string TableName { get; set; }
-    
-       
 
-
-        /// <summary>
-        /// Delete Product
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public int Delete<T>(Guid id) where T : class, new()
+        public ProductsSQLAdapter(string connectionString)
         {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection())
-                {
-                    connection.Open();
+            this.ConnectionString = connectionString;
+            this.TableName = "Products";
+        }
 
-                    string query = $"DELETE FROM {TableName} WHERE product_id = @Id";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Id", id);
 
-                    return command.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error deleting product: {ex.Message}");
-                return 0;
+            /// <summary>
+            /// Delete Product
+            /// </summary>
+            /// <typeparam name="T"></typeparam>
+            /// <param name="id"></param>
+            /// <returns></returns>
+            public int Delete<T>(Guid id) where T : class, new()
+             {
+                 try
+                    {
+                     using (SqlConnection connection = new SqlConnection())
+                    {
+                     connection.Open();
+
+                        string query = $"DELETE FROM {TableName} WHERE product_id = @Id";
+                        SqlCommand command = new SqlCommand(query, connection);
+                         command.Parameters.AddWithValue("@Id", id);
+
+                        return command.ExecuteNonQuery();
+                    }
+             }
+                 catch (Exception ex)
+                 {
+                    Console.WriteLine($"Error deleting product: {ex.Message}");
+                 return 0;
             }
         }
 

@@ -1,4 +1,4 @@
-﻿using CSharp_Basic.Object;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +52,6 @@ namespace CSharp_Basic.SQLAdappter
         /// <param name="id"></param>
         /// <returns></returns>
         int Delete<T>(Guid id) where T : class, new();
-        CartItem GetCartItem(Guid cartId, Guid productId, Guid guid, int empty, int productId, int productId, int product_id);
-        CartItem GetOrderItem(Guid cartId, Guid productId, int empty);
+        
     }
 }

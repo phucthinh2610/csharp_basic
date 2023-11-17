@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\CSharp_Basic.csproj": {}
+    "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\csharp_basic.csproj": {}
   },
   "projects": {
-    "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\CSharp_Basic.csproj": {
+    "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\csharp_basic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\CSharp_Basic.csproj",
-        "projectName": "CSharp_Basic",
-        "projectPath": "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\CSharp_Basic.csproj",
+        "projectUniqueName": "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\csharp_basic.csproj",
+        "projectName": "csharp_basic",
+        "projectPath": "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\csharp_basic.csproj",
         "packagesPath": "C:\\Users\\phamn\\.nuget\\packages\\",
         "outputPath": "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\obj\\",
         "projectStyle": "PackageReference",

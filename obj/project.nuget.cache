@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BLda6nHyqgqyo9adLEFTesnUc1Fu9+5aEi+7tNli9z7eTJI0vJ8ts4LEYZ3e8UZFuybFQzh88BQvwjEQFk+WBg==",
+  "dgSpecHash": "81bHVgSIMZ5gE3kbMpQ9mECyDU3Za2861jXVxLyCf/VMsqQTV2B13tC1huKKK9dzOb3PvNJrUfdoa29CG8hofg==",
   "success": true,
-  "projectFilePath": "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\CSharp_Basic.csproj",
+  "projectFilePath": "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\csharp_basic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\phamn\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\phamn\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",

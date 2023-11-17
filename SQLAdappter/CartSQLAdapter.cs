@@ -5,13 +5,23 @@ using CSharp_Basic.Object;
 
 namespace CSharp_Basic.SQLAdappter
 {
-     public interface CartSQLAdapter  : ISQLAdapter
+     public class CartSQLAdapter  : ISQLAdapter
     {
         public string ConnectionString { get; set; }
         public string TableName { get; set; }
-        int product_iD { get; set; }
-        int UserId { get; }
 
+        public CartSQLAdapter(string connectionString)
+        {
+            this.ConnectionString = connectionString;
+            this.TableName = "Cart";
+        }
+
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public int Delete<T>(Guid id) where T : class, new()
         {
             try
@@ -34,7 +44,13 @@ namespace CSharp_Basic.SQLAdappter
             }
         }
 
-        public Cart GetCartByUserId(Guid userId, int empty)
+        /// <summary>
+        /// get
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public T Get<T>(Guid id) where T : class, new()
         {
             try
             {
@@ -42,70 +58,103 @@ namespace CSharp_Basic.SQLAdappter
                 {
                     connection.Open();
 
-                    string query = $"SELECT cart_id, user_id FROM {TableName} WHERE user_id = @UserId";
+                    string query = $"SELECT * FROM {TableName} WHERE cart_id = @Id";
                     SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UserId", userId);
+                    command.Parameters.AddWithValue("@Id", id);
 
-                    Guid cartId;
+                    SqlDataReader reader = command.ExecuteReader();
 
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    if (reader.Read())
                     {
-                        if (reader.Read())
+                        Cart cart = new Cart
                         {
-                            Cart cart = new Cart();
-                            if (Guid.TryParse(reader["cart_id"].ToString(), out cartId))
-                            {
-                                cart.Id = cartId;
-                            }
-                            else
-                            {
-                                cart.Id = Guid.Empty;
-                            }
+                            Id = Guid.Parse(reader["cart_id"].ToString()),
+                            UserId = Guid.Parse(reader["user_id"].ToString())
+                        };
 
-                            if (Guid.TryParse(reader["user_id"].ToString(), out  userId))
-                            {
-                                cart.UserId = UserId;
-                            }
-                            else
-                            {
-                                cart.UserId = empty;
-                            }
-
-                            return cart;
-                        }
+                        return cart as T;
                     }
                 }
             }
-
             catch (Exception ex)
             {
-                Console.WriteLine($"Error retrieving cart: {ex.Message}");
+                Console.WriteLine($"Error getting cart: {ex.Message}");
             }
 
             return null;
         }
 
+        /// <summary>
+        /// get data
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public List<T> GetData<T>() where T : class, new()
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    string query = $"SELECT * FROM {TableName}";
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    List<T> result = new List<T>();
+
+                    while (reader.Read())
+                    {
+                        Cart cart = new Cart
+                        {
+                            Id = Guid.Parse(reader["cart_id"].ToString()),
+                            UserId = Guid.Parse(reader["USERS_ID"].ToString())
+                        };
+
+                        result.Add(cart as T);
+                    }
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error getting cart data: {ex.Message}");
+                return null;
+            }
         }
 
+        /// <summary>
+        /// insert
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public int Insert<T>(T item) where T : class, new()
         {
             try
             {
                 Cart cart = item as Cart;
 
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                if (cart != null)
                 {
-                    connection.Open();
+                    using (SqlConnection connection = new SqlConnection(ConnectionString))
+                    {
+                        connection.Open();
 
-                    string query = $"INSERT INTO {TableName} (cart_id, user_id) VALUES (@Id, @UserId)";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Id", cart.Id);
-                    command.Parameters.AddWithValue("@UserId", cart.UserId);
+                        string query = $"INSERT INTO {TableName} (cart_id, user_id) VALUES (@Id, @CustomerId)";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@Id", cart.Id);
+                        command.Parameters.AddWithValue("@CustomerId", cart.UserId);
 
-                    return command.ExecuteNonQuery();
+                        return command.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Error: Cart is null.");
+                    return 0;
                 }
             }
             catch (Exception ex)
@@ -115,33 +164,38 @@ namespace CSharp_Basic.SQLAdappter
             }
         }
 
-        public int InsertCartItem(CartItem cartItem)
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public int Update<T>(T item) where T : class, new()
         {
             try
             {
+                Cart cart = item as Cart;
+
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
 
-                    string query = $"INSERT INTO CartItem (cart_item_id, cart_id, product_iD, quantity) " +
-                                   "VALUES (@Id, @CartId, @ProductId, @Quantity)";
+                    string query = $"UPDATE {TableName} SET customer_id = @CustomerId WHERE cart_id = @Id";
                     SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Id", cartItem.Id);
-                    command.Parameters.AddWithValue("@CartId", cartItem.CartId);
-                    command.Parameters.AddWithValue("@ProductId", cartItem.ProductId);
-                    command.Parameters.AddWithValue("@Quantity", cartItem.Quantity);
+                    command.Parameters.AddWithValue("@Id", cart.Id);
+                    command.Parameters.AddWithValue("@CustomerId", cart.UserId);
 
                     return command.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error inserting cart item: {ex.Message}");
+                Console.WriteLine($"Error updating cart: {ex.Message}");
                 return 0;
             }
         }
 
-        public int Update<T>(T item) where T : class, new()
+        int ISQLAdapter.Insert<T>(T item)
         {
             throw new NotImplementedException();
         }

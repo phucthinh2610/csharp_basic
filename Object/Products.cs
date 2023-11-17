@@ -27,5 +27,7 @@ namespace CSharp_Basic.Object
         public decimal Price { get; set; }
         public int product_id { get; internal set; }
         public string name_product { get; internal set; }
+
+        
     }
 }
