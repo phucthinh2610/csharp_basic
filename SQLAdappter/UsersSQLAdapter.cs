@@ -30,7 +30,7 @@ namespace CSharp_Basic.SQLAdappter
                 {
                     connection.Open();
 
-                    string query = $"SELECT UserId, fullName,  email  FROM {TableName} WHERE user_id = @Id";
+                    string query = $"SELECT UserId, fullName,  email  FROM {TableName} WHERE user_id = @Id"; 
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@Id", id);
 
@@ -40,7 +40,7 @@ namespace CSharp_Basic.SQLAdappter
                         {
                             USERS user = new USERS
                             {
-                                Id = Guid.Parse(reader["UserId"].ToString()),
+                                UserId = Guid.Parse(reader["UserId"].ToString()),
                                 fullName = reader["fullName"].ToString(),
                                 email = reader["email"].ToString()
                             };
@@ -74,7 +74,7 @@ namespace CSharp_Basic.SQLAdappter
                     SqlCommand command = new SqlCommand(query, connection);
                     {
                         command.Parameters.AddWithValue("@fullName", user.fullName);
-                        command.Parameters.AddWithValue("@UserId", user.Id);
+                        command.Parameters.AddWithValue("@UserId", user.UserId);
                         command.Parameters.AddWithValue("@email", user.email);
                         return command.ExecuteNonQuery();
                     }
@@ -107,7 +107,7 @@ namespace CSharp_Basic.SQLAdappter
                     {
                         command.Parameters.AddWithValue("@fullName", user.fullName);
                         command.Parameters.AddWithValue("@email", user.email);
-                        command.Parameters.AddWithValue("@Id", user.Id);
+                        command.Parameters.AddWithValue("@Id", user.UserId);
                         return command.ExecuteNonQuery();
                     }
                 }
@@ -179,7 +179,7 @@ namespace CSharp_Basic.SQLAdappter
                                 {
                                     USERS user = new USERS
                                     {
-                                        Id = Guid.Parse(reader["UserId"].ToString()),
+                                        UserId = Guid.Parse(reader["UserId"].ToString()),
                                         fullName = reader["fullName"].ToString(),
 
                                         email = reader["email"].ToString(),

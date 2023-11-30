@@ -37,7 +37,7 @@ namespace CSharp_Basic
                         HandleUSERSTable(ConString);
                         break;
                     case 2:
-                        HandleProductTable(connectionString);
+                        HandleProductTable(ConString);
                         break;
                     case 3:
                         ManageCart(cartService);
@@ -52,6 +52,11 @@ namespace CSharp_Basic
                         break;
                 }
             } while (!exit);
+        }
+
+        private static void HandleProductTable(object connectionString)
+        {
+            throw new NotImplementedException();
         }
 
         static void HandleUSERSTable(string ConString)
@@ -320,10 +325,10 @@ namespace CSharp_Basic
                         ViewUSERSCart(cartService);
                         break;
                     case 3:
-                        AddProductToCustomerCart(cartService);
+                        AddProductToUSERSCart(cartService);
                         break;
                     case 4:
-                        RemoveProductFromCustomerCart(cartService);
+                        RemoveProductFromUSERSCart(cartService);
                         break;
                     case 0:
                         exit = true;
@@ -353,10 +358,10 @@ namespace CSharp_Basic
             cartService.ViewUSERSCart(userId);
         }
 
-        static void AddProductToCustomerCart(CartService cartService)
+        static void AddProductToUSERSCart(CartService cartService)
         {
-            Console.Write("Enter customer ID: ");
-            Guid customerId = Guid.Parse(Console.ReadLine());
+            Console.Write("Enter USERS ID: ");
+            Guid userId = Guid.Parse(Console.ReadLine());
 
             Console.Write("Enter product ID: ");
             Guid productId = Guid.Parse(Console.ReadLine());
@@ -364,26 +369,26 @@ namespace CSharp_Basic
             Console.Write("Enter quantity: ");
             int quantity = Convert.ToInt32(Console.ReadLine());
 
-            cartService.AddProductToCart(customerId, productId, quantity);
-            Console.WriteLine("Product added to customer cart.");   
+            cartService.AddProductsToCart(userId, productId, quantity);
+            Console.WriteLine("Product added to USERS cart.");   
         }
 
-         static void RemoveProductFromCustomerCart(CartService cartService)
+         static void RemoveProductFromUSERSCart(CartService cartService)
         {
             try
             {
-                Console.Write("Enter customer ID: ");
-                string customerIdInput = Console.ReadLine();
+                Console.Write("Enter USERS ID: ");
+                string userIdInput = Console.ReadLine();
 
-                if (Guid.TryParse(customerIdInput, out Guid customerId))
+                if (Guid.TryParse(userIdInput, out Guid userId))
                 {
                     Console.Write("Enter product ID: ");
                     string productIdInput = Console.ReadLine();
 
                     if (Guid.TryParse(productIdInput, out Guid productId))
                     {
-                        cartService.RemoveProductFromCart(customerId, productId);
-                        Console.WriteLine("Product removed from customer cart.");
+                        cartService.RemoveProductFromCart(userId, productId);
+                        Console.WriteLine("Product removed from USERS cart.");
                     }
                     else
                     {
@@ -392,7 +397,7 @@ namespace CSharp_Basic
                 }
                 else
                 {
-                    Console.WriteLine("Invalid customer ID. Please enter a valid GUID.");
+                    Console.WriteLine("Invalid USERS ID. Please enter a valid GUID.");
                 }
             }
             catch (Exception ex)
@@ -412,8 +417,8 @@ namespace CSharp_Basic
             bool exit = false;
             do
             {
-                Console.WriteLine("Order Management:");
-                Console.WriteLine("1. Create Order");
+                Console.WriteLine("Orders Management:");
+                Console.WriteLine("1. Create Orders");
                 Console.WriteLine("2. View Orders");
                 Console.WriteLine("0. Back");
 
@@ -445,10 +450,10 @@ namespace CSharp_Basic
         /// <param name="orderService"></param>
         static void CreateOrder(OrderService orderService)
         {
-            Console.Write("Enter customer ID: ");
-            Guid customerId = Guid.Parse(Console.ReadLine());
+            Console.Write("Enter USERS ID: ");
+            Guid userId = Guid.Parse(Console.ReadLine());
 
-            orderService.CreateOrder(customerId);
+            orderService.CreateOrder(userId);
         }
 
         /// <summary>
@@ -461,10 +466,10 @@ namespace CSharp_Basic
         }
     }
 }
-    }
-}
-    }
-}
+    
+
+    
+
         
     
         

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CSharp_Basic.Object
 {
@@ -17,7 +20,7 @@ namespace CSharp_Basic.Object
         public Guid Id { get; set; }
 
         /// <summary>
-        /// CustomerID
+        /// UserID
         /// </summary>
         public Guid UserId { get; set; }
     }

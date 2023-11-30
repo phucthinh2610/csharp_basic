@@ -1,4 +1,4 @@
-﻿using CSharp_Basic.Object;
+﻿
 using CSharp_Basic.SQLAdappter;
 using CSharp_Basic.Object;
 using System;

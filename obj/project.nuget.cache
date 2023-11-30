@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "81bHVgSIMZ5gE3kbMpQ9mECyDU3Za2861jXVxLyCf/VMsqQTV2B13tC1huKKK9dzOb3PvNJrUfdoa29CG8hofg==",
+  "dgSpecHash": "N6rMi2uZfHVTDHKfZP8xgeFNW1u/CMxwnwZgORP8Bry949xH5w16oKrwL7wufTqdQVgAFQbO6yNT3hkYi9/O+Q==",
   "success": true,
   "projectFilePath": "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\csharp_basic.csproj",
   "expectedPackageFiles": [
@@ -13,7 +13,7 @@
     "C:\\Users\\phamn\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\phamn\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\phamn\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
-    "C:\\Users\\phamn\\.nuget\\packages\\sonaranalyzer.csharp\\9.12.0.78982\\sonaranalyzer.csharp.9.12.0.78982.nupkg.sha512",
+    "C:\\Users\\phamn\\.nuget\\packages\\sonaranalyzer.csharp\\9.14.0.81108\\sonaranalyzer.csharp.9.14.0.81108.nupkg.sha512",
     "C:\\Users\\phamn\\.nuget\\packages\\system.collections\\4.0.11\\system.collections.4.0.11.nupkg.sha512",
     "C:\\Users\\phamn\\.nuget\\packages\\system.data.sqlclient\\4.8.5\\system.data.sqlclient.4.8.5.nupkg.sha512",
     "C:\\Users\\phamn\\.nuget\\packages\\system.diagnostics.debug\\4.0.11\\system.diagnostics.debug.4.0.11.nupkg.sha512",

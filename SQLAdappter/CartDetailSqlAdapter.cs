@@ -1,12 +1,11 @@
-﻿using CSharp_Basic.SQLAdappter;
-using CSharp_Basic.Object;
+﻿using CSharp_Basic.Object;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CSharp_Basic.Object;
+using CSharp_Basic.SQLAdappter;
 
 namespace CSharp_Basic.SQLAdapter
 {

@@ -1,8 +1,12 @@
 ﻿
 using CSharp_Basic.Object;
+using CSharp_Basic.SQLAdappter;
 using CSharp_Basic.SQLAdapter;
 using System;
 using System.Collections.Generic;
+
+
+
 
 
 namespace CSharp_Basic.BussinessService
@@ -12,7 +16,7 @@ namespace CSharp_Basic.BussinessService
         private readonly OrderSqlAdapter orderAdapter;
         private readonly OrderDetailSqlAdapter orderDetailSqlAdapter;
         private readonly CartService cartService;
-        private readonly CartSQLAdapter cartSqlAdapter;
+        private readonly CartSQLAdapter cartSQLAdapter;
         private readonly CartDetailSqlAdapter cartDetailSqlAdapter;
 
         public OrderService(string connectionString)
@@ -20,31 +24,37 @@ namespace CSharp_Basic.BussinessService
             this.orderAdapter = new OrderSqlAdapter(connectionString);
             this.orderDetailSqlAdapter = new OrderDetailSqlAdapter(connectionString);
             this.cartService = new CartService(connectionString);
-            this.cartSqlAdapter = new CartSqlAdapter(connectionString);
+            this.cartSQLAdapter = new CartSQLAdapter(connectionString);
             this.cartDetailSqlAdapter = new CartDetailSqlAdapter(connectionString);
         }
 
-        public void ClearCustomerCart(Guid customerId)
+        public void ClearUSERSCart(Guid userId)
         {
-            Cart customerCart = GetCustomerCart(customerId);
+            Cart userCart = GetUSERSCart(userId);
 
-            if (customerCart != null)
+            if (userCart != null)
             {
-                List<CartDetail> cartDetails = GetCartDetailsByCartId(customerCart.Id);
+                List<CartDetail> cartDetails = GetCartDetailsByCartId(userCart.Id);
                 foreach (var cartDetail in cartDetails)
                 {
                     cartDetailSqlAdapter.Delete<CartDetail>(cartDetail.Id);
                 }
 
-                cartSqlAdapter.Delete<Cart>(customerCart.Id);
+                cartSQLAdapter.Delete<Cart>(userCart.Id);
 
-                Console.WriteLine($"Customer cart cleared. Customer ID: {customerId}");
+                Console.WriteLine($"USERS cart cleared. USERS ID: {userId}");
             }
             else
             {
-                Console.WriteLine($"Customer cart not found for Customer ID: {customerId}");
+                Console.WriteLine($"USERS cart not found for USERS ID: {userId}");
             }
         }
+
+        private Cart GetUSERSCart(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
         public void CreateOrder(Guid customerId)
         {
             // Retrieve the customer's cart details
@@ -56,7 +66,7 @@ namespace CSharp_Basic.BussinessService
                 decimal totalAmount = 0;
                 foreach (var cartDetail in cartDetails)
                 {
-                    Product product = cartService.GetProductById(cartDetail.ProductId);
+                    Products product = cartService.GetProductById(cartDetail.ProductId);
                     if (product != null)
                     {
                         totalAmount += cartDetail.Quantity * product.Price;
@@ -64,10 +74,10 @@ namespace CSharp_Basic.BussinessService
                 }
 
                 // Create an order
-                Order newOrder = new Order
+                Orders newOrder = new Orders
                 {
                     Id = Guid.NewGuid(),
-                    CustomerId = customerId,
+                    UserId =  ,
                     OrderDay = DateTime.Now, // Set the order date to the current date
                     TotalAmount = totalAmount
                 };
@@ -79,8 +89,8 @@ namespace CSharp_Basic.BussinessService
                 {
                     Console.WriteLine("Order created successfully.");
 
-                    // Clear the customer's cart after creating the order
-                    cartService.ClearCustomerCart(customerId);
+                    // Clear the user's cart after creating the order
+                    cartService.ClearUSERSCart(userId);
                 }
                 else
                 {
@@ -97,7 +107,7 @@ namespace CSharp_Basic.BussinessService
         public void ViewOrders()
         {
             // Retrieve and display all orders
-            List<Order> orders = orderAdapter.GetData<Order>();
+            List<Orders> orders = orderAdapter.GetData<Orders>();
 
             if (orders != null && orders.Any())
             {
@@ -105,7 +115,7 @@ namespace CSharp_Basic.BussinessService
 
                 foreach (var order in orders)
                 {
-                    Console.WriteLine($"Order ID: {order.Id}, Customer ID: {order.CustomerId}, Order Date: {order.OrderDay}, Total Amount: {order.TotalAmount}");
+                    Console.WriteLine($"Order ID: {order.Id}, User ID: {order.UserId}, Order Date: {order.OrderDay}, Total Amount: {order.TotalAmount}");
                 }
             }
             else
@@ -121,7 +131,7 @@ namespace CSharp_Basic.BussinessService
 
             foreach (var cartDetail in cartDetails)
             {
-                Product product = cartService.GetProductById(cartDetail.ProductId);
+                Products product = cartService.GetProductById(cartDetail.ProductId);
                 if (product != null)
                 {
                     totalAmount += cartDetail.Quantity * product.Price;
@@ -131,11 +141,11 @@ namespace CSharp_Basic.BussinessService
             Console.WriteLine($"Total amount: {totalAmount}");
         }
 
-        private Cart GetCustomerCart(Guid customerId)
+        private Cart GetUSERSCART(Guid userId)
         {
-            // Get customer cart from the database
-            List<Cart> customerCarts = cartSqlAdapter.GetData<Cart>();
-            return customerCarts.FirstOrDefault(c => c.CustomerId == customerId);
+            // Get user cart from the database
+            List<Cart> userCarts = cartSQLAdapter.GetData<Cart>();
+            return userCarts.FirstOrDefault(c => c.UserId == userId);
         }
 
         private List<CartDetail> GetCartDetailsByCartId(Guid Id)
@@ -143,6 +153,57 @@ namespace CSharp_Basic.BussinessService
             // Get cart details based on cartId
             List<CartDetail> cartDetail = cartDetailSqlAdapter.GetData<CartDetail>().Where(cd => cd.Id == Id).ToList();
             return cartDetail;
+        }
+    }
+
+    public class CartService
+    {
+        private string connectionString;
+        private object connectionString1;
+
+        public CartService(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+
+        public CartService(object connectionString1)
+        {
+            this.connectionString1 = connectionString1;
+        }
+
+        public void ClearUSERSCart(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CartDetail> GetCartDetails(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Products GetProductById(Guid productId)
+        {
+            throw new NotImplementedException();
+        }
+
+       public List<Cart> GetUSERSCarts()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ViewUSERSCart(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddProductsToCart(Guid userId, Guid productId, int quantity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveProductFromCart(Guid userId, Guid productId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

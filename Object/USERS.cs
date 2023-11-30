@@ -14,7 +14,7 @@ namespace CSharp_Basic.Object
         /// <summary>       
         /// Id Order
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid UserId { get; set; }
 
         /// <summary>
         /// Id User

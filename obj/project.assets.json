@@ -148,7 +148,7 @@
           }
         }
       },
-      "SonarAnalyzer.CSharp/9.12.0.78982": {
+      "SonarAnalyzer.CSharp/9.14.0.81108": {
         "type": "package"
       },
       "System.Collections/4.0.11": {
@@ -986,10 +986,10 @@
         "version.txt"
       ]
     },
-    "SonarAnalyzer.CSharp/9.12.0.78982": {
-      "sha512": "QxhfMFCNeZWP3gP/R8QM3MuDWm+Esj8Lt3oD61tid5TPuqsaKJtwMZNZWE2FOqqGuKlu3805o8MlkTWBL75skA==",
+    "SonarAnalyzer.CSharp/9.14.0.81108": {
+      "sha512": "+I2yx6sTKgnUHrGzF7q56dA8H7waaX4fCUhqNLTfWrg33ltHX+ZqHXb1KGs5Q8iCN648Dn6J5O/Wf8hv1uXoYQ==",
       "type": "package",
-      "path": "sonaranalyzer.csharp/9.12.0.78982",
+      "path": "sonaranalyzer.csharp/9.14.0.81108",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -1000,7 +1000,7 @@
         "analyzers/SonarAnalyzer.dll",
         "images/sonarsource_64.png",
         "license/THIRD-PARTY-NOTICES.txt",
-        "sonaranalyzer.csharp.9.12.0.78982.nupkg.sha512",
+        "sonaranalyzer.csharp.9.14.0.81108.nupkg.sha512",
         "sonaranalyzer.csharp.nuspec",
         "tools/install.ps1",
         "tools/uninstall.ps1"
@@ -3205,7 +3205,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Newtonsoft.Json >= 9.0.1",
-      "SonarAnalyzer.CSharp >= 9.12.0.78982",
+      "SonarAnalyzer.CSharp >= 9.14.0.81108",
       "System.Data.SqlClient >= 4.8.5"
     ]
   },
@@ -3216,9 +3216,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\CSharp_Basic.csproj",
-      "projectName": "CSharp_Basic",
-      "projectPath": "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\CSharp_Basic.csproj",
+      "projectUniqueName": "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\csharp_basic.csproj",
+      "projectName": "csharp_basic",
+      "projectPath": "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\csharp_basic.csproj",
       "packagesPath": "C:\\Users\\phamn\\.nuget\\packages\\",
       "outputPath": "D:\\BTVN\\csharp_basic\\csharp_basic\\csharp_basic\\obj\\",
       "projectStyle": "PackageReference",
@@ -3262,7 +3262,7 @@
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[9.12.0.78982, )"
+            "version": "[9.14.0.81108, )"
           },
           "System.Data.SqlClient": {
             "target": "Package",
